@@ -65,13 +65,16 @@
 }
 
 .filter {
+  display: flex;
   margin-top: 10px;
+  align-items: center;
 }
 
 .filter-btn {
   padding: 10px;
   border-radius: 3px;
   border-width: 1px;
+  margin-left: 15px;
 }
 
 .shimmer-container {
@@ -87,4 +90,27 @@
   border-radius: 17px;
   margin: 15px;
   background-color: #f0f0f0;
+}
+
+.login {
+  margin-right: 15px;
+  padding: 0 20px;
+  cursor: pointer;
+}
+
+.search {
+  padding: 10px;
+  border-radius: 10px;
+  border: solid black 1px;
+}
+
+.search-button {
+  padding: 9px;
+  border-width: 1px;
+  margin-left: -3px;
+}
+
+.search-box {
+  padding: 9px;
+  border-width: 1px;
 }
