@@ -16,3 +16,5 @@ Footer
 -Address
 -Contact  
 _/
+
+(Dynamic App Data)
