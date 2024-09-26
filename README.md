@@ -18,3 +18,4 @@ Footer
 _/
 
 (Dynamic App Data)
+web app
