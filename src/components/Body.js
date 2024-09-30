@@ -18,8 +18,6 @@ const Body = () => {
 
   const RestaurantCardPromoted = withPromotedLabel(RestaurantCard);
 
-  console.log("Body Rendered", listOfRestaurants);
-
   const onlineStatus = useOnlineStatus();
   if (onlineStatus === false)
     return (
@@ -43,7 +41,8 @@ const Body = () => {
             }}
           />
           <button
-            className="px-4 py-2 bg-green-300 m-4 rounded-lg"
+            className=" m-4 px-4 py-2 bg-slate-200 shadow-md shadow-slate-500 font-medium  hover:bg-[rgb(254,80,5)]
+             hover:text-white hover:scale-95 rounded-lg transition-all duration-300"
             onClick={() => {
               console.log(searchText);
               //Filter the restaurants cards and update the UI
@@ -59,7 +58,8 @@ const Body = () => {
         </div>
         <div>
           <button
-            className="px-4 py-2 bg-orange-300 rounded-lg"
+            className=" mx-5 px-4 py-2 bg-slate-200 shadow-md shadow-slate-500 font-medium  hover:bg-[rgb(254,80,5)]
+             hover:text-white hover:scale-95 rounded-lg transition-all duration-300"
             onClick={() => {
               const filteredList = listOfRestaurants.filter(
                 (res) => res.info.avgRating > 4.5
