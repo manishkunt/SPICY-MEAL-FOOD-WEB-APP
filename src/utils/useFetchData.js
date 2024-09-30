@@ -6,11 +6,14 @@ const useFetchData = () => {
 
   const [filteredRestaurant, setFilteredRestaurant] = useState([]);
 
+  const [loading, setLoading] = useState([]);
+
   useEffect(() => {
     fetchData();
   }, []);
 
   const fetchData = async () => {
+    setLoading(true);
     const data = await fetch(RES_API);
     const json = await data.json();
 
@@ -22,6 +25,7 @@ const useFetchData = () => {
       json?.data?.cards?.[1]?.card?.card?.gridElements?.infoWithStyle
         ?.restaurants
     );
+    setLoading(false);
   };
 
   return {
@@ -29,6 +33,7 @@ const useFetchData = () => {
     setListOfRestaurant,
     filteredRestaurant,
     setFilteredRestaurant,
+    loading,
   };
 };
 
