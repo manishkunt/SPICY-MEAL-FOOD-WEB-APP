@@ -1,3 +1,5 @@
+import { CDN_URL, NO_IMG } from "../utils/constants";
+
 const ItemList = ({ items }) => {
   console.log(items);
   return (
@@ -5,21 +7,33 @@ const ItemList = ({ items }) => {
       {items.map((item) => (
         <div
           key={item.card.info.id}
-          className="p-2 m-2 border-b-2 border-gray-200 text-left"
+          className="flex items-center justify-between p-2 m-2 border-gray-300 border-b-2 text-left"
         >
-          <div className="mb-2 text-lg font-medium">
+          {/* First Child Div: Takes 3 times the space */}
+          <div className=" flex-grow-[3] my-4 mb-2 text-lg font-medium">
             <span>{item.card.info.name}</span>
-            <span>
-              {" "}
-              - ₹{" "}
+            <li className="list-none">
+              ₹{" "}
               {item.card.info.price
                 ? item.card.info.price / 100
                 : item.card.info.defaultPrice / 100}
-            </span>
+            </li>
+            <p className="text-custom-text my-4 font-mono text-sm">
+              {item.card.info.description}
+            </p>
           </div>
-          <p className="text-custom-text font-mono text-sm">
-            {item.card.info.description}
-          </p>
+
+          {/* Second Child Div: Takes normal space */}
+          <div className="flex-none w-36 h-36 ml-4 overflow-hidden">
+            <img
+              className="w-full h-full object-cover rounded-xl"
+              src={CDN_URL + item.card.info.imageId}
+              onError={(e) => {
+                e.target.onerror = null; // Prevents looping in case the default image fails
+                e.target.src = NO_IMG; // Specify the path to your default image
+              }}
+            />
+          </div>
         </div>
       ))}
     </div>

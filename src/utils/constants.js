@@ -9,3 +9,6 @@ export const MENU_API =
 
 export const RES_API =
   "https://www.swiggy.com/dapi/restaurants/list/v5?lat=26.8942501&lng=75.8285916&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING";
+
+export const NO_IMG =
+  "https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg";
