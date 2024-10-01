@@ -15,12 +15,12 @@ const RestaurantCard = (props) => {
   } = resData?.info;
 
   return (
-    <div className="p-4 h-[295px] w-[270px] hover:scale-95 transition-transform duration-300 relative">
+    <div className=" h-[295px] w-[240px]  hover:scale-95 transition-transform duration-300 relative">
       {" "}
       {/* Added relative */}
       {props.isPromoted && (
         <label
-          className="absolute top-2 left-2 text-xs font-semibold bg-black hover:bg-[rgb(254,80,5)]
+          className="absolute top-2 -left-1 text-xs font-semibold bg-[rgb(237,69,109)] hover:bg-[rgb(241,92,82)]
          text-white p-2 rounded-lg z-10"
         >
           {" "}

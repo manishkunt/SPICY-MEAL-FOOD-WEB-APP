@@ -55,7 +55,7 @@ const Body = () => {
             Search
           </button>
         </div>
-        <div>
+        <div className="pr-3">
           <button
             className="mx-5 px-4 py-2 bg-slate-200 shadow-md shadow-slate-500 font-medium
              hover:bg-[rgb(254,80,5)]
@@ -73,19 +73,17 @@ const Body = () => {
       </div>
 
       {/* Restaurant Cards */}
-      <div className="flex flex-wrap ">
+      <div className="flex flex-wrap">
         {filteredRestaurant.map((restaurant) => (
-          <Link
-            key={restaurant.info.id}
-            to={"/restaurants/" + restaurant.info.id}
-            className="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 p-4 flex-grow-0 flex-shrink-0"
-          >
-            {restaurant.info.sla.lastMileTravel < 1 ? (
-              <RestaurantCardPromoted resData={restaurant} />
-            ) : (
-              <RestaurantCard resData={restaurant} />
-            )}
-          </Link>
+          <div className="p-4" key={restaurant.info.id}>
+            <Link to={"/restaurants/" + restaurant.info.id}>
+              {restaurant.info.sla.lastMileTravel < 1 ? (
+                <RestaurantCardPromoted resData={restaurant} />
+              ) : (
+                <RestaurantCard resData={restaurant} />
+              )}
+            </Link>
+          </div>
         ))}
       </div>
     </div>
