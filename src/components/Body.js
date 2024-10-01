@@ -4,7 +4,6 @@ import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
 import useFetchData from "../utils/useFetchData";
-import { useState, useEffect } from "react";
 
 const Body = () => {
   const [searchText, setSearchText] = useState("");
@@ -16,37 +15,37 @@ const Body = () => {
     loading,
   } = useFetchData();
 
+  console.log(listOfRestaurants);
+
   const RestaurantCardPromoted = withPromotedLabel(RestaurantCard);
 
   const onlineStatus = useOnlineStatus();
   if (onlineStatus === false)
     return (
       <>
-        <h1>Oops....Looks like you're offline !</h1>
+        <h1>Oops....Looks like you're offline!</h1>
         <h2>Please check your internet connection</h2>
       </>
     );
+
   return loading ? (
     <Shimmer />
   ) : (
-    <div className="body">
-      <div className="filter flex items-center">
+    <div className="w-10/12 mx-auto">
+      {/* Search and Filter Buttons */}
+      <div className="filter flex items-center justify-between my-4">
         <div className="Search">
           <input
             type="text"
-            className="border border-solid border-black"
+            className="border border-solid border-black p-2 rounded-lg"
+            placeholder="Search for restaurants"
             value={searchText}
-            onChange={(e) => {
-              setSearchText(e.target.value);
-            }}
+            onChange={(e) => setSearchText(e.target.value)}
           />
           <button
-            className=" m-4 px-4 py-2 bg-slate-200 shadow-md shadow-slate-500 font-medium  hover:bg-[rgb(254,80,5)]
+            className="m-4 px-4 py-2 bg-slate-200 shadow-md shadow-slate-500 font-medium hover:bg-[rgb(254,80,5)]
              hover:text-white hover:scale-95 rounded-lg transition-all duration-300"
             onClick={() => {
-              console.log(searchText);
-              //Filter the restaurants cards and update the UI
-              // searchText
               const filteredRestaurant = listOfRestaurants.filter((res) =>
                 res.info.name.toLowerCase().includes(searchText.toLowerCase())
               );
@@ -58,7 +57,8 @@ const Body = () => {
         </div>
         <div>
           <button
-            className=" mx-5 px-4 py-2 bg-slate-200 shadow-md shadow-slate-500 font-medium  hover:bg-[rgb(254,80,5)]
+            className="mx-5 px-4 py-2 bg-slate-200 shadow-md shadow-slate-500 font-medium
+             hover:bg-[rgb(254,80,5)]
              hover:text-white hover:scale-95 rounded-lg transition-all duration-300"
             onClick={() => {
               const filteredList = listOfRestaurants.filter(
@@ -71,20 +71,20 @@ const Body = () => {
           </button>
         </div>
       </div>
-      <div className="flex flex-wrap">
+
+      {/* Restaurant Cards */}
+      <div className="flex flex-wrap ">
         {filteredRestaurant.map((restaurant) => (
           <Link
             key={restaurant.info.id}
             to={"/restaurants/" + restaurant.info.id}
+            className="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 p-4 flex-grow-0 flex-shrink-0"
           >
-            {
-              /** if the restaurant is under 1.5 kms near you then the restaurant is prmoted**/
-              restaurant.info.sla.lastMileTravel < 1 ? (
-                <RestaurantCardPromoted resData={restaurant} />
-              ) : (
-                <RestaurantCard resData={restaurant} />
-              )
-            }
+            {restaurant.info.sla.lastMileTravel < 1 ? (
+              <RestaurantCardPromoted resData={restaurant} />
+            ) : (
+              <RestaurantCard resData={restaurant} />
+            )}
           </Link>
         ))}
       </div>

@@ -11,7 +11,7 @@ const Header = () => {
     <div className="flex items-center justify-between  bg-white shadow-xl mb-2">
       <div className="logo-container">
         <img
-          className=" m-4 w-24 transition-transform duration-500 ease-in-out hover:scale-125"
+          className=" m-4 w-16 transition-transform duration-500 ease-in-out hover:scale-125"
           src={LOGO_URL}
           alt="Logo"
         />
