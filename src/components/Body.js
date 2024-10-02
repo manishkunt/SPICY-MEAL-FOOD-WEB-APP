@@ -31,13 +31,16 @@ const Body = () => {
   return loading ? (
     <Shimmer />
   ) : (
-    <div className="w-10/12 mx-auto">
+    <div className="min-h-screen dark:bg-black">
+    <div className="w-9/12 mx-auto">
       {/* Search and Filter Buttons */}
-      <div className="filter flex items-center justify-between my-4">
-        <div className="Search">
+      <div className=" filter flex flex-col md:flex-row md:justify-between items-center">
+        <div className="Search flex flex-col md:flex-row items-center">
           <input
             type="text"
-            className="border border-solid border-black p-2 rounded-lg"
+            className="border border-solid border-black p-2 rounded-lg mb-2 md:mb-0 dark:bg-black
+             dark:border-gray-500 dark:border-solid placeholder-gray-500 dark:placeholder-[rgb(170,170,170)]
+             text-black dark:text-white"
             placeholder="Search for restaurants"
             value={searchText}
             onChange={(e) => setSearchText(e.target.value)}
@@ -75,7 +78,7 @@ const Body = () => {
       {/* Restaurant Cards */}
       <div className="flex flex-wrap">
         {filteredRestaurant.map((restaurant) => (
-          <div className="p-4" key={restaurant.info.id}>
+          <div className="p-4  w-full sm:w-1/2 md:w-1/3 lg:w-1/4" key={restaurant.info.id}>
             <Link to={"/restaurants/" + restaurant.info.id}>
               {restaurant.info.sla.lastMileTravel < 1 ? (
                 <RestaurantCardPromoted resData={restaurant} />
@@ -86,6 +89,7 @@ const Body = () => {
           </div>
         ))}
       </div>
+    </div>
     </div>
   );
 };

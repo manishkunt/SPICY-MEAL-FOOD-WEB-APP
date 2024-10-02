@@ -11,14 +11,14 @@ const ItemList = ({ items }) => {
         >
           {/* First Child Div: Takes 3 times the space */}
           <div className=" flex-grow-[3] my-4 mb-2 text-lg font-medium">
-            <span>{item.card.info.name}</span>
-            <li className="list-none">
+            <span className="dark:text-white">{item.card.info.name}</span>
+            <li className="list-none dark:text-white">
               ₹{" "}
               {item.card.info.price
                 ? item.card.info.price / 100
                 : item.card.info.defaultPrice / 100}
             </li>
-            <p className="text-custom-text my-4 font-mono text-sm">
+            <p className="text-custom-text my-4 font-mono text-sm dark:text-[rgb(170,170,170)]">
               {item.card.info.description}
             </p>
           </div>

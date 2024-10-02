@@ -1,6 +1,5 @@
 import { CDN_URL } from "../utils/constants";
 import Rating from "../Logos/Rating.png";
-import LocationLogo from "../Logos/LocationLogo.png";
 
 const RestaurantCard = (props) => {
   const { resData } = props;
@@ -10,12 +9,14 @@ const RestaurantCard = (props) => {
     areaName,
     cuisines,
     avgRating,
-    costForTwo,
     sla,
   } = resData?.info;
 
   return (
-    <div className=" h-[295px] w-[240px]  hover:scale-95 transition-transform duration-300 relative">
+    <div
+      className=" h-[295px] w-[240px]  hover:scale-95 transition-transform duration-300 relative
+      hover:shadow-md hover:rounded-2xl"
+    >
       {" "}
       {/* Added relative */}
       {props.isPromoted && (
@@ -36,18 +37,18 @@ const RestaurantCard = (props) => {
         />
       </div>
       <div className="mx-3">
-        <h3 className="font-bold pt-2 text-lg truncate">{name}</h3>
-        <div className="flex items-center">
+        <h3 className="font-bold pt-2 text-lg truncate dark:text-white">{name}</h3>
+        <div className="flex items-center dark:text-white">
           <img className="w-5 h-5" src={Rating} />
           <h4 className="ml-1 text-lg  font-medium">{avgRating} •</h4>
           <h4 className="ml-1 text-lg  font-semibold">
             {sla.deliveryTime} mins
           </h4>
         </div>
-        <h4 className="text-custom-text font-medium truncate">
+        <h4 className="text-custom-text font-medium truncate dark:text-[rgb(170,170,170)]">
           {cuisines.join(", ")}
         </h4>
-        <h4 className="text-custom-text font-medium truncate">{areaName}</h4>
+        <h4 className="text-custom-text font-medium truncate dark:text-[rgb(170,170,170)]">{areaName}</h4>
       </div>
     </div>
   );
