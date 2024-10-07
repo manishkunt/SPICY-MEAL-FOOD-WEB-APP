@@ -15,8 +15,6 @@ const Body = () => {
     loading,
   } = useFetchData();
 
-  console.log(listOfRestaurants);
-
   const RestaurantCardPromoted = withPromotedLabel(RestaurantCard);
 
   const onlineStatus = useOnlineStatus();

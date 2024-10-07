@@ -17,9 +17,6 @@ class UserClass extends React.Component {
     // console.log(this.props.name + "child componentDidMount");
     // API call
 
-    this.timer = setInterval(() => {
-      console.log("Robin Chan is love...!");
-    }, 1000);
 
     const data = await fetch("https://api.github.com/users/manishkunt");
     const json = await data.json();
@@ -28,12 +25,6 @@ class UserClass extends React.Component {
       userInfo: json,
     });
 
-    console.log(json);
-  }
-
-  componentWillUnmount() {
-    clearInterval(this.timer);
-    console.log("component will unmount");
   }
 
   render() {

@@ -1,13 +1,22 @@
+import { useDispatch } from "react-redux";
+import { addItem } from "../utils/cartSlice";
 import { CDN_URL, NO_IMG } from "../utils/constants";
 
 const ItemList = ({ items }) => {
-  console.log(items);
+  const dispatch = useDispatch();
+
+  const handleAddItem = (item) => {
+    //dispatch an action
+    dispatch(addItem(item));
+    console.log(item);
+  };
+
   return (
     <div>
       {items.map((item) => (
         <div
           key={item.card.info.id}
-          className="flex items-center justify-between p-2 m-2 border-gray-300 border-b-2 text-left"
+          className="flex items-center justify-between pb-4 m-2 py-2 border-gray-300 border-b-2 text-left"
         >
           {/* First Child Div: Takes 3 times the space */}
           <div className=" flex-grow-[3] my-4 mb-2 text-lg font-medium">
@@ -24,15 +33,28 @@ const ItemList = ({ items }) => {
           </div>
 
           {/* Second Child Div: Takes normal space */}
-          <div className="flex-none w-36 h-36 ml-4 overflow-hidden">
-            <img
-              className="w-full h-full object-cover rounded-xl"
-              src={CDN_URL + item.card.info.imageId}
-              onError={(e) => {
-                e.target.onerror = null; // Prevents looping in case the default image fails
-                e.target.src = NO_IMG; // Specify the path to your default image
-              }}
-            />
+          <div className="flex-none w-36 h-44 ml-4">
+            <div className="flex flex-col h-full">
+              <div className="flex-grow-[2] pb-2">
+                <img
+                  className="w-full h-32 object-cover rounded-xl"
+                  src={CDN_URL + item.card.info.imageId}
+                  onError={(e) => {
+                    e.target.onerror = null; // Prevents looping in case the default image fails
+                    e.target.src = NO_IMG; // Specify the path to your default image
+                  }}
+                />
+              </div>
+              <div className="flex-grow-[1] flex items-center justify-center">
+                <button
+                  className="px-10 py-2 bg-white rounded-lg border-[1px] border-slate-300 shadow-lg
+                 text-green-600 font-extrabold"
+                  onClick={() => handleAddItem(item)}
+                >
+                  ADD
+                </button>
+              </div>
+            </div>
           </div>
         </div>
       ))}

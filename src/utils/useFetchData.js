@@ -6,7 +6,7 @@ const useFetchData = () => {
 
   const [filteredRestaurant, setFilteredRestaurant] = useState([]);
 
-  const [loading, setLoading] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     fetchData();
