@@ -4,7 +4,7 @@ import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
 import useFetchData from "../utils/useFetchData";
-
+import NoResData from "./NoResData";
 const Body = () => {
   const [searchText, setSearchText] = useState("");
   const {
@@ -28,6 +28,8 @@ const Body = () => {
 
   return loading ? (
     <Shimmer />
+  ) : filteredRestaurant?.length === 0 ? (
+    <NoResData />
   ) : (
     <div className="min-h-screen dark:bg-black">
       <div className="w-9/12 mx-auto">
@@ -36,6 +38,7 @@ const Body = () => {
           <div className="Search flex flex-col md:flex-row items-center">
             <input
               type="text"
+              data-testid="searchInput"
               className="border border-solid border-black p-2 rounded-lg mb-2 md:mb-0 dark:bg-black
              dark:border-gray-500 dark:border-solid placeholder-gray-500 dark:placeholder-[rgb(170,170,170)]
              text-black dark:text-white"
@@ -77,7 +80,7 @@ const Body = () => {
         <div className="flex flex-wrap">
           {filteredRestaurant.map((restaurant) => (
             <div
-              className="p-4  w-full sm:w-1/2 md:w-1/3 lg:w-1/4"
+              className="p-4 w-full sm:w-1/2 md:w-1/3 lg:w-1/4"
               key={restaurant.info.id}
             >
               <Link to={"/restaurants/" + restaurant.info.id}>

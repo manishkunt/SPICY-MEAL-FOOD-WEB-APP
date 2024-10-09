@@ -13,19 +13,25 @@ const useFetchData = () => {
   }, []);
 
   const fetchData = async () => {
-    setLoading(true);
-    const data = await fetch(RES_API);
-    const json = await data.json();
+    try {
+      setLoading(true);
+      const data = await fetch(RES_API);
+      const json = await data.json();
 
-    setListOfRestaurant(
-      json?.data?.cards?.[1]?.card?.card?.gridElements?.infoWithStyle
-        ?.restaurants
-    );
-    setFilteredRestaurant(
-      json?.data?.cards?.[1]?.card?.card?.gridElements?.infoWithStyle
-        ?.restaurants
-    );
-    setLoading(false);
+      setListOfRestaurant(
+        json?.data?.cards?.[1]?.card?.card?.gridElements?.infoWithStyle
+          ?.restaurants || []
+      );
+      setFilteredRestaurant(
+        json?.data?.cards?.[1]?.card?.card?.gridElements?.infoWithStyle
+          ?.restaurants || []
+      );
+    } catch (error) {
+      console.error("Error fetching restaurant data:", error);
+      // Optionally, you can handle errors by setting a message or fallback state here.
+    } finally {
+      setLoading(false);
+    }
   };
 
   return {

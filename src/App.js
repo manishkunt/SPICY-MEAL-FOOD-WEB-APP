@@ -8,29 +8,28 @@ import Error from "./components/Error";
 import RestaurantMenu from "./components/RestaurantMenu";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import { DarkModeProvider } from "./utils/DarkModeContext";
-import {useState, useEffect} from "react";
+import { useState, useEffect } from "react";
 import { Provider } from "react-redux";
 import appStore from "./utils/appStore";
 import Cart from "./components/Cart";
 
 const About = lazy(() => import("./components/About"));
 const AppLayout = () => {
-
   const [userInfo, setUserInfo] = useState();
 
   useEffect(() => {
     const data = {
-      name: "Manish Kumar"
+      name: "Manish Kumar",
     };
     setUserInfo(data.name);
-  }, [])
+  }, []);
 
   return (
     <Provider store={appStore}>
-    <div className="app">
-      <Header />
-      <Outlet />
-    </div>
+      <div className="app">
+        <Header />
+        <Outlet />
+      </div>
     </Provider>
   );
 };

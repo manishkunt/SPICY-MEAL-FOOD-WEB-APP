@@ -1,0 +1,69 @@
+{
+  "info": {
+      "id": "137500",
+      "name": "Domino's Pizza",
+      "cloudinaryImageId": "RX_THUMBNAIL/IMAGES/VENDOR/2024/9/13/ef027b18-01b8-4c3f-8d31-2de639b081dd_137500.JPG",
+      "locality": "Ramada Govind Marg",
+      "areaName": "Raja Park",
+      "costForTwo": "₹400 for two",
+      "cuisines": [
+          "Pizzas",
+          "Italian",
+          "Pastas",
+          "Desserts"
+      ],
+      "avgRating": 4.3,
+      "parentId": "2456",
+      "avgRatingString": "4.3",
+      "totalRatingsString": "6.7K+",
+      "sla": {
+          "deliveryTime": 30,
+          "lastMileTravel": 0.3,
+          "serviceability": "SERVICEABLE",
+          "slaString": "25-30 mins",
+          "lastMileTravelString": "0.3 km",
+          "iconType": "ICON_TYPE_EMPTY"
+      },
+      "availability": {
+          "nextCloseTime": "2024-10-09 02:55:00",
+          "opened": true
+      },
+      "badges": {},
+      "isOpen": true,
+      "type": "F",
+      "badgesV2": {
+          "entityBadges": {
+              "imageBased": {},
+              "textBased": {},
+              "textExtendedBadges": {}
+          }
+      },
+      "aggregatedDiscountInfoV3": {
+          "header": "₹100 OFF",
+          "subHeader": "ABOVE ₹499",
+          "discountTag": "FLAT DEAL"
+      },
+      "differentiatedUi": {
+          "displayType": "ADS_UI_DISPLAY_TYPE_ENUM_DEFAULT",
+          "differentiatedUiMediaDetails": {
+              "mediaType": "ADS_MEDIA_ENUM_IMAGE",
+              "lottie": {},
+              "video": {}
+          }
+      },
+      "reviewsSummary": {},
+      "displayType": "RESTAURANT_DISPLAY_TYPE_DEFAULT",
+      "restaurantOfferPresentationInfo": {},
+      "externalRatings": {
+          "aggregatedRating": {
+              "rating": "--"
+          }
+      },
+      "ratingsDisplayPreference": "RATINGS_DISPLAY_PREFERENCE_SHOW_SWIGGY"
+  },
+  "analytics": {},
+  "cta": {
+      "link": "https://www.swiggy.com/city/jaipur/dominos-pizza-ramada-govind-marg-raja-park-rest137500",
+      "type": "WEBLINK"
+  }
+}

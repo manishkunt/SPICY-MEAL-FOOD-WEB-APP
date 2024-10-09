@@ -60,14 +60,17 @@ const Header = () => {
           <li className="px-4 font-medium hover:text-[rgb(254,80,5)] relative flex items-center">
             <Link to="/cart" className="inline-block relative pb-1">
               <img className="w-7 " src={CartLogo} alt="Cart Logo" />
-              <span className="absolute inset-0 flex items-center justify-center text-black
-               dark:text-white text-xs font-bold transform translate-y-1">
+              <span
+                className="absolute inset-0 flex items-center justify-center text-black
+               dark:text-white text-xs font-bold transform translate-y-1"
+              >
                 {cartItems.length}
               </span>
             </Link>
-            <Link className="ml-1" to="/cart">Cart</Link>
+            <Link className="ml-1" to="/cart">
+              Cart
+            </Link>
           </li>
-
           <button
             className="px-4 py-2  font-medium hover:text-white hover:bg-[rgb(254,80,5)] hover: rounded-md transition-all duration- 300"
             onClick={() => {
