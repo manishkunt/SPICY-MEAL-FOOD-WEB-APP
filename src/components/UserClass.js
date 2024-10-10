@@ -17,26 +17,32 @@ class UserClass extends React.Component {
     // console.log(this.props.name + "child componentDidMount");
     // API call
 
-
     const data = await fetch("https://api.github.com/users/manishkunt");
     const json = await data.json();
 
     this.setState({
       userInfo: json,
     });
-
   }
 
   render() {
     // console.log(name + "child Rendor");
-    const { name, location, avatar_url } = this.state.userInfo;
+    const { avatar_url } = this.state.userInfo;
 
     return (
-      <div className="user-card">
-        <img src={avatar_url}></img>
-        <h2>Name: {name}</h2>
-        <h2>Location: {location}</h2>
-        <h2>Contact: @manishkunt</h2>
+      <div className="flex items-center w-9/12 ml-10 ">
+        <div className="pl-10 pt-10 user-card  w-2/5 ml-24 flex flex-col items-center">
+          <img className="rounded-full w-56" src={avatar_url}></img>
+          <h2 className="font-medium dark:text-white">Manish Kumar</h2>
+          <h2 className="font-medium text-slate-700 dark:text-slate-400">Full Stack Developer</h2>
+        </div>
+        <div className="w-3/5 text-slate-500 font-medium">
+          <p><span className="font-bold">Manish</span> is a 2024 Computer Science Engineering (CSE) graduate and a Full Stack Development engineer with a
+             strong foundation in MERN Stack (MongoDB, Express.js, React.js, and Node.js) and Java Development
+             (Stream API, Spring). He is proficient in designing user interactive, simple and visually stunning UI 
+             interfaces.
+             </p>
+        </div>
       </div>
     );
   }
