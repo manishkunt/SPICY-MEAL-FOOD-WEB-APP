@@ -1,7 +1,7 @@
 import RestaurantCard, { withPromotedLabel } from "./RestaurantCard";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Shimmer from "./Shimmer";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
 import useFetchData from "../utils/useFetchData";
 import NoResData from "./NoResData";
@@ -18,6 +18,17 @@ const Body = () => {
   const RestaurantCardPromoted = withPromotedLabel(RestaurantCard);
 
   const onlineStatus = useOnlineStatus();
+
+  const location = useLocation(); // Get the current location
+
+  // Reset filtered restaurants when the route changes to home
+  useEffect(() => {
+    if (location.pathname === "/") {
+      setFilteredRestaurant(listOfRestaurants); // Reset to original list
+      setSearchText(""); // Optionally clear the search text
+    }
+  }, [location, listOfRestaurants, setFilteredRestaurant]);
+
   if (onlineStatus === false)
     return (
       <>
@@ -32,10 +43,10 @@ const Body = () => {
     <NoResData />
   ) : (
     <div className="min-h-screen dark:bg-black">
-      <div className="w-9/12 mx-auto">
+      <div className="w-full px-44 m-auto pb-4">
         {/* Search and Filter Buttons */}
-        <div className=" filter flex flex-col md:flex-row md:justify-between items-center">
-          <div className="Search flex flex-col md:flex-row items-center">
+        <div className="pt-2 pb-5  filter flex flex-col md:flex-row items-center justify-between">
+          <div className=" flex flex-col md:flex-row items-center">
             <input
               type="text"
               data-testid="searchInput"
@@ -45,14 +56,44 @@ const Body = () => {
               placeholder="Search for restaurants"
               value={searchText}
               onChange={(e) => setSearchText(e.target.value)}
+              onKeyDown={(e) => {
+                if (e.key === "Enter") {
+                  const filteredRestaurant = listOfRestaurants.filter((res) => {
+                    const { name, areaName, cuisines, avgRating } = res.info; // Destructure needed properties
+                    const searchLower = searchText.toLowerCase();
+
+                    // Check if search text matches any of the desired properties
+                    return (
+                      name.toLowerCase().includes(searchLower) ||
+                      areaName.toLowerCase().includes(searchLower) ||
+                      cuisines.some((cuisine) =>
+                        cuisine.toLowerCase().includes(searchLower)
+                      ) ||
+                      (avgRating && avgRating.toString().includes(searchLower)) // Ensure avgRating is a string
+                    );
+                  });
+                  setFilteredRestaurant(filteredRestaurant);
+                }
+              }}
             />
             <button
-              className="m-4 px-4 py-2 bg-slate-200 shadow-md shadow-slate-500 font-medium hover:bg-[rgb(254,80,5)]
+              className="my-4 mx-4 px-4 py-2 bg-slate-200 shadow-md shadow-slate-500 font-medium hover:bg-[rgb(254,80,5)]
              hover:text-white hover:scale-95 rounded-lg transition-all duration-300"
               onClick={() => {
-                const filteredRestaurant = listOfRestaurants.filter((res) =>
-                  res.info.name.toLowerCase().includes(searchText.toLowerCase())
-                );
+                const filteredRestaurant = listOfRestaurants.filter((res) => {
+                  const { name, areaName, cuisines, avgRating } = res.info; // Destructure needed properties
+                  const searchLower = searchText.toLowerCase();
+
+                  // Check if search text matches any of the desired properties
+                  return (
+                    name.toLowerCase().includes(searchLower) ||
+                    areaName.toLowerCase().includes(searchLower) ||
+                    cuisines.some((cuisine) =>
+                      cuisine.toLowerCase().includes(searchLower)
+                    ) ||
+                    (avgRating && avgRating.toString().includes(searchLower)) // Ensure avgRating is a string
+                  );
+                });
                 setFilteredRestaurant(filteredRestaurant);
               }}
             >
@@ -61,7 +102,7 @@ const Body = () => {
           </div>
           <div>
             <button
-              className="px-4 py-2 bg-slate-200 shadow-md shadow-slate-500 font-medium
+              className=" ml-14 px-4 py-2 bg-slate-200 shadow-md shadow-slate-500 font-medium
              hover:bg-[rgb(254,80,5)]
              hover:text-white hover:scale-95 rounded-lg transition-all duration-300"
               onClick={() => {
@@ -75,12 +116,13 @@ const Body = () => {
             </button>
           </div>
         </div>
-
+      </div>
+      <div className="w-9/12 mx-auto">
         {/* Restaurant Cards */}
         <div className="flex flex-wrap">
           {filteredRestaurant.map((restaurant) => (
             <div
-              className="p-4 w-full sm:w-1/2 md:w-1/3 lg:w-1/4"
+              className="py-4 w-full sm:w-1/2 md:w-1/3 lg:w-1/4"
               key={restaurant.info.id}
             >
               <Link to={"/restaurants/" + restaurant.info.id}>

@@ -6,9 +6,7 @@ const ItemList = ({ items }) => {
   const dispatch = useDispatch();
 
   const handleAddItem = (item) => {
-    //dispatch an action
-    dispatch(addItem(item));
-    console.log(item);
+    dispatch(addItem(item)); // Dispatch action to add item to cart
   };
 
   return (
@@ -28,7 +26,7 @@ const ItemList = ({ items }) => {
                 ? item.card.info.price / 100
                 : item.card.info.defaultPrice / 100}
             </li>
-            <p className="text-custom-text my-4 font-mono text-sm dark:text-[rgb(170,170,170)]">
+            <p className="text-custom-text my-4 font-mono text-sm font-semibold dark:text-[rgb(170,170,170)] text-slate-500">
               {item.card.info.description}
             </p>
           </div>

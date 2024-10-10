@@ -7,8 +7,10 @@ import UserContext from "../utils/UserContext";
 import CartLogo from "../Logos/CartLogo.png";
 import { useDarkMode } from "../utils/DarkModeContext"; // Import useDarkMode hook
 import { useSelector } from "react-redux";
+import Online from "../Logos/Online.png";
+import Offline from "../Logos/Offline.png";
 
-const Header = ({onLoginClick}) => {
+const Header = ({ onLoginClick }) => {
   const [btnNameReact, setBtnNameReact] = useState("Login");
 
   const onlineStatus = useOnlineStatus();
@@ -39,13 +41,23 @@ const Header = ({onLoginClick}) => {
         <ul className="flex items-center p-1 m-4 dark:text-white">
           <button onClick={toggleDarkMode}>
             <img
-              className="w-6"
+              className="w-6 pb-1"
               src={DarkModeLogo}
               title={darkMode ? "Switch to Light Mode" : "Switch to Dark Mode"}
             />
           </button>
-          <li className="px-4 font-medium hover:text-[rgb(254,80,5)]">
-            {onlineStatus ? "Online 🟢" : "Offline 🔴"}
+          <li title="User Online">
+            {onlineStatus ? (
+              <img className="w-6 pb-1 ml-4" src={Online} />
+            ) : (
+              <span className=" ml-4">🔴</span>
+            )}
+          </li>
+          <li
+            className="pr-4 font-medium text-base hover:text-[rgb(254,80,5)]"
+            title="User Online"
+          >
+            {onlineStatus ? "Online" : "Offline"}
           </li>
           <li className="px-4 font-medium hover:text-[rgb(254,80,5)]">
             <Link to="/">Home</Link>
@@ -57,11 +69,11 @@ const Header = ({onLoginClick}) => {
             <Link to="Contact">Contact Us</Link>
           </li>
           <li className="px-4 font-medium hover:text-[rgb(254,80,5)] relative flex items-center">
-            <Link to="/cart" className="inline-block relative pb-1">
-              <img className="w-7 " src={CartLogo} alt="Cart Logo" />
+            <Link to="/cart" className="inline-block relative pb-0">
+              <img className="w-6 pb-1" src={CartLogo} alt="Cart Logo " />
               <span
                 className="absolute inset-0 flex items-center justify-center text-black
-               dark:text-white text-xs font-bold transform translate-y-1"
+               dark:text-white text-xs font-bold transform translate-y-1 pb-1"
               >
                 {cartItems.length}
               </span>
