@@ -1,15 +1,14 @@
 import { LOGO_URL } from "../utils/constants";
 import { useState, useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
 import DarkModeLogo from "../Logos/DarkModeLogo.png";
 import UserContext from "../utils/UserContext";
 import CartLogo from "../Logos/CartLogo.png";
-
 import { useDarkMode } from "../utils/DarkModeContext"; // Import useDarkMode hook
 import { useSelector } from "react-redux";
 
-const Header = () => {
+const Header = ({onLoginClick}) => {
   const [btnNameReact, setBtnNameReact] = useState("Login");
 
   const onlineStatus = useOnlineStatus();
@@ -72,14 +71,10 @@ const Header = () => {
             </Link>
           </li>
           <button
-            className="px-4 py-2  font-medium hover:text-white hover:bg-[rgb(254,80,5)] hover: rounded-md transition-all duration- 300"
-            onClick={() => {
-              btnNameReact === "Login"
-                ? setBtnNameReact("LogOut")
-                : setBtnNameReact("Login");
-            }}
+            className="px-4 py-2 font-medium hover:text-white hover:bg-[rgb(254,80,5)] hover: rounded-md transition-all duration-300"
+            onClick={onLoginClick} // Handle login click
           >
-            {btnNameReact}
+            Login
           </button>
         </ul>
       </div>

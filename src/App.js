@@ -12,10 +12,14 @@ import { useState, useEffect } from "react";
 import { Provider } from "react-redux";
 import appStore from "./utils/appStore";
 import Cart from "./components/Cart";
+import Login from "./components/Login"; // Import Login component
 
 const About = lazy(() => import("./components/About"));
+
 const AppLayout = () => {
   const [userInfo, setUserInfo] = useState();
+
+  const [isLoginOpen, setIsLoginOpen] = useState(false);
 
   useEffect(() => {
     const data = {
@@ -24,11 +28,17 @@ const AppLayout = () => {
     setUserInfo(data.name);
   }, []);
 
+  // Define the handleLoginToggle function
+  const handleLoginToggle = () => {
+    setIsLoginOpen((prev) => !prev); // Toggle login visibility
+  };
+
   return (
     <Provider store={appStore}>
       <div className="app">
-        <Header />
+        <Header onLoginClick={handleLoginToggle} /> {/* Pass toggle function */}
         <Outlet />
+        {isLoginOpen && <Login closeLogin={handleLoginToggle} />}
       </div>
     </Provider>
   );
@@ -62,6 +72,14 @@ const appRouter = createBrowserRouter([
       {
         path: "/cart",
         element: <Cart />,
+      },
+      {
+        path: "/login",
+        element: (
+          <Suspense fallback={<h1>Loading...</h1>}>
+            <Login />
+          </Suspense>
+        ),
       },
     ],
     errorElement: <Error />,

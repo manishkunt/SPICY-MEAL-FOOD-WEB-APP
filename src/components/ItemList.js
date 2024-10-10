@@ -49,7 +49,7 @@ const ItemList = ({ items }) => {
               <div className="flex-grow-[1] flex items-center justify-center">
                 <button
                   className="px-10 py-2 bg-white rounded-lg border-[1px] border-slate-300 shadow-lg
-                 text-green-600 font-extrabold"
+                 text-green-600 font-extrabold hover:scale-95 active:bg-[rgb(254,80,5)] transition duration-300 ease-in-out"
                   onClick={() => handleAddItem(item)}
                 >
                   ADD
