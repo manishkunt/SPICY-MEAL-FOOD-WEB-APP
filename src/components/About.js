@@ -15,7 +15,7 @@ class About extends Component {
       <div className="dark:bg-black min-h-screen">
         <div className="flex items-center h-72 border-b-2 border-slate-300 dark:border-gray-700">
           <div className="flex w-1/5 ">
-            <img className="w-72 pt-20" src={FoodPack} />
+            <img className="w-72 pt-16" src={FoodPack} />
           </div>
           <div className="w-3/5">
             <h1 className="text-center text-5xl  font-semibold dark:text-white">
@@ -30,11 +30,13 @@ class About extends Component {
             </h1>
           </div>
           <div className="w-1/5">
-            <img className="w-72 pt-24" src={Samosa} />
+            <img className="w-72 pt-20" src={Samosa} />
           </div>
         </div>
         <div className="pt-10">
-          <h1 className="text-2xl text-center font-semibold text-gray-600 dark:bg-black dark:text-white">Meet The Developer</h1>
+          <h1 className="text-2xl text-center font-semibold text-gray-600 dark:bg-black dark:text-white">
+            Meet The Developer
+          </h1>
           <UserClass name={"First "} location={"Jaipur"} />
         </div>
       </div>
