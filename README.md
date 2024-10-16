@@ -10,7 +10,7 @@ Body
 -Image
 -Name of res, star rating, cuisine, delivery time
 -Address
--Contact
+- Contact
 
 (Dynamic App Data)
 
