@@ -15,7 +15,8 @@ const ItemList = ({ items }) => {
         <div
           data-testid="foodItems"
           key={item.card.info.id}
-          className="flex items-center justify-between pb-4 m-2 py-2 border-gray-300 border-b-2 text-left"
+          className="flex items-center justify-between pb-4 m-2 py-2 border-gray-300 border-b-2
+           text-left"
         >
           {/* First Child Div: Takes 3 times the space */}
           <div className=" flex-grow-[3] my-4 mb-2 text-lg font-medium">

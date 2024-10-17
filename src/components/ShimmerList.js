@@ -1,7 +1,7 @@
 const ShimmerList = () => {
   return (
     <div className="dark:bg-black min-h-screen">
-      <div className="w-6/12 m-auto pt-10">
+      <div className="w-6/12 below-sm:w-10/12 sm:w-full md:w-8/12 m-auto pt-10">
       <div className="flex flex-wrap justify-center pt-16">
         {Array(10)
           .fill("")

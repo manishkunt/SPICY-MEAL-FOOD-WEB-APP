@@ -26,7 +26,7 @@ const Cart = () => {
       {cartItems.length === 0 ? (
         <EmptyCart /> // Show the EmptyCart component if cart is empty
       ) : (
-        <div className="w-6/12 m-auto p-4">
+        <div className="w-6/12 below-sm:w-full sm:w-full md:w-8/12 m-auto p-4">
           <h1 className="text-4xl font-bold text-center dark:text-white pt-5">Your Cart</h1>
           <div className="flex items-center">
             <button

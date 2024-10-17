@@ -43,16 +43,16 @@ const Body = () => {
     <NoResData />
   ) : (
     <div className="min-h-screen dark:bg-black">
-      <div className="w-full px-44 m-auto pb-4">
+      <div className="w-full lg:w-9/12 sm:w-10/12 md:w-10/12 pb-4 mx-auto">
         {/* Search and Filter Buttons */}
-        <div className="pt-2 pb-5  filter flex flex-col md:flex-row items-center justify-between">
-          <div className=" flex flex-col md:flex-row items-center">
+        <div className="pt-4 pb-5 flex justify-between items-center below-sm:ml-2 below-sm:mr-2">
+          <div className="flex">
             <input
               type="text"
               data-testid="searchInput"
-              className="border border-solid border-black p-2 rounded-lg mb-2 md:mb-0 dark:bg-black
+              className="border border-solid border-black  rounded-lg  dark:bg-black
              dark:border-gray-500 dark:border-solid placeholder-gray-500 dark:placeholder-[rgb(170,170,170)]
-             text-black dark:text-white"
+             text-black dark:text-white below-sm:mr-2 lg:px-2 lg:py-2"
               placeholder="Search for restaurants"
               value={searchText}
               onChange={(e) => setSearchText(e.target.value)}
@@ -77,8 +77,8 @@ const Body = () => {
               }}
             />
             <button
-              className="my-4 mx-4 px-4 py-2 bg-slate-200 shadow-md shadow-slate-500 font-medium hover:bg-[rgb(254,80,5)]
-             hover:text-white hover:scale-95 rounded-lg transition-all duration-300"
+              className="below-sm:px-2 below-sm:py-1 bg-slate-200 shadow-md shadow-slate-500 font-medium hover:bg-[rgb(254,80,5)]
+             hover:text-white hover:scale-95 rounded-lg transition-all duration-300 px-2 py-2 lg:ml-2 sm:ml-2 md:ml-2"
               onClick={() => {
                 const filteredRestaurant = listOfRestaurants.filter((res) => {
                   const { name, areaName, cuisines, avgRating } = res.info; // Destructure needed properties
@@ -102,9 +102,9 @@ const Body = () => {
           </div>
           <div>
             <button
-              className=" ml-14 px-4 py-2 bg-slate-200 shadow-md shadow-slate-500 font-medium
+              className="below-sm:px-2 below-sm:py-1 bg-slate-200 shadow-md shadow-slate-500 font-medium
              hover:bg-[rgb(254,80,5)]
-             hover:text-white hover:scale-95 rounded-lg transition-all duration-300"
+             hover:text-white hover:scale-95 rounded-lg transition-all duration-300 px-2 py-2"
               onClick={() => {
                 const filteredList = listOfRestaurants.filter(
                   (res) => res.info.avgRating > 4.5
@@ -117,14 +117,11 @@ const Body = () => {
           </div>
         </div>
       </div>
-      <div className="w-9/12 mx-auto">
+      <div className="lg:w-9/12 below-sm:w-full sm:w-10/12 md:w-10/12 xl:w-9/12 mx-auto">
         {/* Restaurant Cards */}
-        <div className="flex flex-wrap">
+        <div className=" flex flex-wrap">
           {filteredRestaurant.map((restaurant) => (
-            <div
-              className="py-4 w-full sm:w-1/2 md:w-1/3 lg:w-1/4"
-              key={restaurant.info.id}
-            >
+            <div className="p-4 lg:px-2 md:w-1/3 lg:w-1/4" key={restaurant.info.id}>
               <Link to={"/restaurants/" + restaurant.info.id}>
                 {restaurant.info.sla.lastMileTravel < 1 ? (
                   <RestaurantCardPromoted resData={restaurant} />

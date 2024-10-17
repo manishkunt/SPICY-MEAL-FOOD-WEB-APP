@@ -10,7 +10,7 @@ const Shimmer = () => {
           <div className="w-52 h-12 bg-gray-200 dark:bg-slate-700 rounded-lg"></div>
         </div>
         <div className="pt-16">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 max-w-screen-lg mx-auto">
+          <div className="grid grid-cols-1 below-sm:grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 max-w-screen-lg mx-auto">
             {Array(20)
               .fill("")
               .map((_, index) => (

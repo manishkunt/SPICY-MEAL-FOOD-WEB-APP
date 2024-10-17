@@ -9,8 +9,8 @@ const RestaurantCard = (props) => {
   return (
     <div
       data-testid="resCard"
-      className=" h-[295px] w-[240px]  hover:scale-95 transition-transform duration-300 relative
-      hover:shadow-md hover:rounded-2xl"
+      className=" h-[295px] w-[240px] below-sm:w-[200px] below-sm:h-[270px] hover:scale-95 transition-transform
+       duration-300 relative hover:shadow-md hover:rounded-2xl md:mr-16"
     >
       {" "}
       {/* Added relative */}
@@ -24,7 +24,7 @@ const RestaurantCard = (props) => {
           PROMOTED
         </label>
       )}
-      <div className="h-[162px] w-full">
+      <div className="h-[162px] below-sm:h-[145px] w-full">
         <img
           className="h-full w-full rounded-2xl object-cover"
           alt="res-logo"
